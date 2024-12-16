@@ -1,3 +1,5 @@
+"use client";
+
 import { IoT } from '@/types/iot';
 import { createIoTDevice, deleteIoTDevice, getAllIoTDevices, updateIoTDevice } from '@/utils/api';
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
