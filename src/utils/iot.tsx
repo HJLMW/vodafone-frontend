@@ -80,7 +80,7 @@ export const getColumns = ({ onAddNew, onEdit, onDelete }: ColumnsProps) => {
 			dataIndex: 'lastConnection',
 			key: 'lastConnection',
 			render: (timestamp: number) => {
-				const date = new Date(timestamp * 1000);
+				const date = new Date(parseInt(timestamp.toString()));
 				return date.toLocaleDateString() + " " + date.toLocaleTimeString();
 			},
 		},

@@ -45,7 +45,7 @@ const IoTModal = ({ iot, show, onClose, isNew, onSaveNewIoT }: IoTModalProps) =>
 
 	const handleDateChange = (date: dayjs.Dayjs | null) => {
 		if (date) {
-			setformData({ ...formData, lastConnection: date.toDate().getTime() });
+			setformData({ ...formData, lastConnection: parseInt(date.toDate().getTime().toString()) });
 		}
 	};
 
