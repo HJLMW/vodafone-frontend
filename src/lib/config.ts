@@ -1,4 +1,4 @@
-export const APOLLO_GRAPHQL_URL = process.env.NODE_ENV !== "development"
+export const APOLLO_GRAPHQL_URL = process.env.NODE_ENV === "development"
 	? "http://localhost:3001"
 	: "https://vodafone-backend-production.up.railway.app" as const;
 
