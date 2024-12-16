@@ -9,12 +9,14 @@ export const metadata: Metadata = {
 	description: "Global IoT platform",
 };
 
+// Main PanelLayout component that wraps the panel page content
 export default function PanelLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
 	return (
+		// Wrapping content with the GlobalPanelProvider to provide context and global state to child components
 		<GlobalPanelProvider>
 			<div className="panel-root">
 				<TopBar />

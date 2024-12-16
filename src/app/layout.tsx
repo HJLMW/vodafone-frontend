@@ -7,6 +7,7 @@ export const metadata: Metadata = {
 	description: "Global IoT platform",
 };
 
+// Main layout component that wraps the whole app content
 export default function RootLayout({
 	children,
 }: Readonly<{
@@ -19,6 +20,7 @@ export default function RootLayout({
 			</head>
 			<body>
 				<div className="root-content">
+					{/* Wrapping content with the GlobalPanelProvider to provide context and global state to child components */}
 					<GlobalProvider>
 						{children}
 					</GlobalProvider>

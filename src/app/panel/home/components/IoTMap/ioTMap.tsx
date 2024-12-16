@@ -5,19 +5,26 @@ import "./ioTMap-styles.css";
 import { useIoT } from '@/contexts/iotContext';
 import { DEFAULT_MAP_POSITION, MAP_STYLE } from '@/lib/config';
 
+// Map component showing all devices
 export default function IoTMap() {
+	// Get IoT devices data from the context
 	const { iots } = useIoT();
-	
+
+	// State to track the currently selected device
 	const [selectedDevice, setSelectedDevice] = useState<string | null>(null);
 
+	// Toggle selection of the device on marker click
 	const handleMarkerClick = (id: string) => {
 		if (selectedDevice === id) {
+			// Deselect if the same marker is clicked
 			setSelectedDevice(null);
 		} else {
+			// Select the new marker
 			setSelectedDevice(id);
 		}
 	};
 
+	// Customize the popup container's position
 	const getPopupContainer = (triggerNode: HTMLElement): HTMLElement => {
 		const parent = triggerNode.parentNode;
 		if (parent instanceof HTMLElement) {
@@ -26,7 +33,8 @@ export default function IoTMap() {
 		return triggerNode;
 	};
 
-	const hideMarker = (id: string):boolean => selectedDevice !== null && selectedDevice !== id;
+	// Hide markers that are not selected to clean the interface
+	const hideMarker = (id: string): boolean => selectedDevice !== null && selectedDevice !== id;
 
 	return (
 		<div className="iotmap-root">
@@ -39,6 +47,7 @@ export default function IoTMap() {
 				mapStyle={MAP_STYLE}
 				style={{ width: 1100, height: 750, borderRadius: 8, overflow: 'hidden' }}
 			>
+				{/* Loop through the IoT devices and display each marker */}
 				{iots.map(device => (
 					<Marker
 						style={{ display: hideMarker(device.id) ? "none" : "block" }}
@@ -47,6 +56,7 @@ export default function IoTMap() {
 						latitude={device.coordinates.lat}
 						onClick={() => handleMarkerClick(device.id)}
 					>
+						{/* Popover to show device details when a marker is clicked */}
 						<Popover
 							content={
 								<div className="iot-marker-content">

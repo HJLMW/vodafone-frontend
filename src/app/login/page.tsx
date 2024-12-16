@@ -8,10 +8,14 @@ import { useState } from "react";
 import { User } from "@/types/user";
 import { useUserSession } from "@/contexts/userContext";
 
+// Login component to handle user authentication
 export default function Login() {
+	// Extracts setUserSession from context to store user session data
 	const { setUserSession } = useUserSession();
 
 	const router = useRouter();
+
+	// Track loading state during login
 	const [isLoading, setIsLoading] = useState(false);
 
 	const [formData, setFormData] = useState<User>({
@@ -19,15 +23,20 @@ export default function Login() {
 		password: ""
 	});
 
+	// Handle input changes and update form data state
 	const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = e.target;
 		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
 
+	// Handle form submission, update session, and navigate to the panel page
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
+
+		// Show loading state
 		setIsLoading(true);
 
+		// Store user session in context and redirect to the panel.
 		setUserSession(formData.email);
 		router.push("/panel");
 	};
@@ -52,6 +61,7 @@ export default function Login() {
 				</div>
 				<form onSubmit={handleSubmit} className="login-right">
 					<center><h1>Access Portal</h1></center><br />
+					{/* Email input field */}
 					<Input
 						disabled={isLoading}
 						className="login-input"
@@ -63,6 +73,7 @@ export default function Login() {
 						prefix={<UserOutlined className="login-input-placeholder-icon" />}
 						required
 					/>
+					{/* Password input field */}
 					<Input
 						disabled={isLoading}
 						className="login-input"
@@ -74,6 +85,7 @@ export default function Login() {
 						prefix={<LockOutlined className="login-input-placeholder-icon" />}
 						required
 					/>
+					{/* Submit button, showing loading spinner when isLoading is true */}
 					<button
 						type="submit"
 						disabled={isLoading}

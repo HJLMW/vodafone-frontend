@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# IoT Device Management - Vodafone Technical Test
 
-## Getting Started
+This project is a frontend application built with **Next.js** as part of a technical test for **Vodafone**. The goal of this app is to demonstrate the basic functionalities of an IoT device management platform, with a mock session management system, a dynamic device list, and a map showing device locations.
 
-First, run the development server:
+## Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The app consists of the following key features:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Session Management**: A small mock session system that allows users to "log in" and receive feedback as if they were interacting with a real login system.
+- **Device Management**: Users can view, add, edit, and delete IoT devices using a table interface.
+- **Map Integration**: The app uses a map to display IoT devices' locations. This is achieved through the **'react-map-gl/maplibre' library**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Device List**: A table listing all IoT devices with columns for device details such as `Title`, `Description`, `Coordinates`, `Mobile Number`, and `Last Connection`.
+- **Session Simulation**: A basic, mock session management system. Users can simulate logging in to the platform. Note: This is purely for feedback purposes and does not connect to a real authentication system.
+- **Map Display**: Displays a map with IoT device coordinates. The map is powered by **react-map-gl and Maplibre** library.
 
-## Learn More
+## Technologies Used
 
-To learn more about Next.js, take a look at the following resources:
+  - **Next.js**: Framework for server-side rendering and static site generation.
+  - **Apollo Client**: For interacting with a GraphQL API and managing the state of IoT devices.
+  - **Ant Design**: Provides UI components like tables, buttons, and popovers for building an elegant interface.
+  - **React Map GL**: Used to display IoT devices' locations on an interactive map.
+  - **TypeScript**: Ensures type safety throughout the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Key Features in Detail
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Mock Session Management
 
-## Deploy on Vercel
+The app features a basic login screen where users can enter credentials to simulate logging into the system. While this feature does not integrate with a backend authentication system, it provides visual feedback to the user, mimicking the process of a real authentication flow. That's a bonus, but It was not mandatory to develop.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Device Management Table
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The **Device Management** page contains a table where users can manage IoT devices. Each device has the following attributes:
+- **ID**
+- **Title**
+- **Description**
+- **Coordinates (Latitude, Longitude)**
+- **Mobile Number**
+- **Last Connection Timestamp**
+- **IoT Code**
+
+Users can **add**, **edit**, and **delete** devices using intuitive buttons in the table's action column. The list is fetched dynamically and displays data based on the current state in the Apollo Client cache.
+
+### Map Integration
+
+The app includes a **Maplibre** map that shows IoT device locations based on their coordinates. As devices are added or modified, their locations are reflected on the map in real-time. The map is fully interactive, allowing users to zoom in and out or drag the view to explore different areas.
+
+### Dynamic Data Fetching
+
+One of the key features of the app is the global state management and the dynamic fetching of IoT device data. The device data is automatically fetched and managed through a **React Context**. Upon initialization, a `useEffect` hook is triggered, which fetches the device data and updates the state accordingly. This setup ensures that any changes to the data are instantly reflected across the application, providing a seamless user experience.
+
+The use of state management frameworks like Redux was avoided due to the simplicity of the problem and the minimal state management required. Additionally, as an optimization for state management, it would have been more appropriate to create a reducer and abstract the state logic outside of the context. However, since the problem is so simple, this could have made the code more complex and harder for this problem. 
+
+Furthermore, given that two routes require access to the devices (IoTs), the decision was made to create a context and call the API to fetch the devices when the context is initialized. This approach abstracts the logic of fetching devices within the components of those routes, simplifying the overall architecture.
