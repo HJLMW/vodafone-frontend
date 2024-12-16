@@ -10,5 +10,5 @@ export default function Page() {
 	if (!userSession)
 		return <Login />;
 
-	return <Home />;
+	return null;
 }
