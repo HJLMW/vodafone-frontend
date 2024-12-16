@@ -4,8 +4,7 @@ import { useRouter } from "next/navigation";
 import "./login-styles.css";
 import { Input } from "antd";
 import { LoadingOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
-import { useRef, useState } from "react";
-import Loading from "../components/Loading/loading";
+import { useState } from "react";
 import { User } from "@/types/user";
 import { useUserSession } from "@/contexts/userContext";
 
@@ -14,7 +13,6 @@ export default function Login() {
 
 	const router = useRouter();
 	const [isLoading, setIsLoading] = useState(false);
-	const loadingRef = useRef<any>(null);
 
 	const [formData, setFormData] = useState<User>({
 		email: "",
@@ -30,16 +28,12 @@ export default function Login() {
 		e.preventDefault();
 		setIsLoading(true);
 
-		// Simulating API CALL and saving sesseion
 		setUserSession(formData.email);
-		setTimeout(() => {
-			loadingRef.current.close().then(() => router.push("/panel"));
-		}, 1500);
+		router.push("/panel");
 	};
 
 	return (
 		<div className="login-root">
-			<Loading color="white" show={isLoading} ref={loadingRef} />
 			<div className="login-content">
 				<div className="login-video">
 					<div className="login-text-content">
