@@ -79,7 +79,10 @@ export const getColumns = ({ onAddNew, onEdit, onDelete }: ColumnsProps) => {
 			title: 'Last Connection',
 			dataIndex: 'lastConnection',
 			key: 'lastConnection',
-			render: (timestamp: number) => new Date(timestamp).toLocaleDateString(),
+			render: (timestamp: number) => {
+				const date = new Date(timestamp * 1000);
+				return date.toLocaleDateString() + " " + date.toLocaleTimeString();
+			},
 		},
 		{
 			title: 'IoT Code',
