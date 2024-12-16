@@ -2,6 +2,10 @@
 
 This project is a frontend application built with **Next.js** as part of a technical test for **Vodafone**. The goal of this app is to demonstrate the basic functionalities of an IoT device management platform, with a mock session management system, a dynamic device list, and a map showing device locations.
 
+The app is hosted using Vercel at:
+
+https://vodafone-frontend.vercel.app/
+
 ## Overview
 
 The app consists of the following key features:
