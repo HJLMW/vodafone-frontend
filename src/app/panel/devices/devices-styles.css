@@ -1,0 +1,74 @@
+.devices-root {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-width: 1100px;
+}
+
+.devices-edit-button {
+	color: white !important;
+	border: none;
+	border-radius: 8px;
+	padding: 7px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 14px;
+	transition: .1s;
+	cursor: pointer;
+	background-color: #6f88aa !important;
+}
+
+.devices-edit-button:hover {
+	background-color: #6f88aa !important;
+	opacity: 0.7;
+}
+
+.devices-delete-button {
+	transition: .1s;
+	border: none;
+	border-radius: 8px;
+	padding: 7px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 14px;
+	cursor: pointer;
+	background-color: var(--primary);
+	color: white;
+}
+
+.devices-delete-button:hover {
+	background-color: var(--primary) !important;
+	color: white !important;
+	opacity: 0.7;
+}
+
+.devices-add-button {
+	display: flex;
+	gap: 10px;
+	width: fit-content;
+	transition: .1s;
+	border: none;
+	border-radius: 8px;
+	padding: 7px;
+	padding-left: 10px;
+	padding-right: 10px;
+	font-size: 14px;
+	cursor: pointer;
+	background-color: var(--primary);
+	color: white;
+}
+
+.devices-add-button:hover {
+	background-color: var(--primary) !important;
+	color: white !important;
+	opacity: 0.7;
+}
+
+.devices-table .ant-table-row:hover {
+	cursor: pointer;
+}
+
+.devices-table .ant-table-row:active {
+	opacity: 0.8;
+}
+

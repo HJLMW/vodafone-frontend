@@ -1,0 +1,74 @@
+.topBar-root {
+	padding: 15px;
+	background-color: #fff;
+	display: flex;
+	justify-content: center;
+	z-index: 9;
+	position: relative;
+}
+
+.topBar-content {
+	width: 100%;
+	max-width: 1100px;
+	display: flex;
+	align-items: center;
+	gap: 30px;
+}
+
+.topBar-items {
+	display: flex;
+	flex: 1;
+	gap: 15px;
+}
+
+.topBar-popOver {
+	max-width: 100px;
+}
+
+.topBar-popOver span {
+	cursor: pointer;
+	color: var(--primary-text);
+	transition: .1s;
+}
+
+.topBar-popOver span:hover {
+	opacity: 0.7;
+}
+
+.topBar-account {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: var(--primary-text);
+	background-color: var(--background);
+	border-radius: 50%;
+	padding: 10px;
+	opacity: 0.7;
+	font-size: 24px;
+	cursor: pointer;
+	transition: .1s;
+}
+
+.topBar-account:hover {
+	opacity: 0.5;
+}
+
+.topBar-item {
+	color: var(--primary-text);
+	font-weight: 500;
+	font-size: 16px;
+	cursor: pointer;
+	transition: .1s;
+}
+
+.topBar-item:hover {
+	opacity: 0.7;
+}
+
+.topBar-item:active {
+	opacity: 0.6;
+}
+
+.topBar-logo:hover {
+	cursor: pointer;
+}
