@@ -62,7 +62,7 @@ export default function IoTMap() {
 								<div className="iot-marker-content">
 									<h4>{device.title}</h4>
 									<p>{device.description}</p><br />
-									<p><b>Last connection: </b>{new Date(device.lastConnection).toLocaleString()}</p>
+									<p><b>Last connection: </b>{new Date(parseInt(device.lastConnection.toString())).toLocaleString()}</p>
 									<span className="iot-marker-close" onClick={() => setSelectedDevice(null)}>close</span>
 								</div>
 							}
